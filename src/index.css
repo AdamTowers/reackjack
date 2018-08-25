@@ -1,5 +1,179 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway|Righteous");
+
 body {
+  background: springgreen;
+}
+
+h1 {
+  font: 95px Righteous, Georgia, Times New Roman, serif;
+  color: white;
+  margin: 15px 0px 15px 0px;
+}
+
+h3 {
+  font: 60px Righteous, Georgia, Times New Roman, serif;
+  margin: 0px;
+  color: mediumseagreen;
+  margin: 15px 0px 15px 0px;
+  }
+
+h3 {
+  font: 60px Righteous, Georgia, Times New Roman, serif;
+  margin: 0px;
+  color:white;
+}
+
+h5 {
+  font: 50px Righteous, Georgia, Times New Roman, serif;
   margin: 0;
-  padding: 0;
+  color: mediumseagreen;
+}
+
+button {
+  border: none;
+  outline: none;
+  border-radius: 24px;
+  margin: 5px;
+  background: mediumseagreen;
+  color: white;
+  font-weight: bold;
+  -webkit-transition: background-color 100ms linear, color 100ms linear;
+  -moz-transition: background-color 100ms linear, color 100ms linear;
+  -o-transition: background-color 100ms linear, color 100ms linear;
+  -ms-transition: background-color 100ms linear, color 100ms linear;
+  transition: background-color 100ms linear, color 100ms linear;
+}
+
+button:hover {
+  background: white;
+  color: mediumseagreen;
+}
+
+button.lg {
+  font: 20px Raleway, Arial, sans-serif;
+  padding: 7px 20px;
+  font-weight: bold;
+}
+
+button.sm {
+  font: 14px Raleway, Arial, sans-serif;
+  padding: 5px 15px;
+  font-weight: bold;
+}
+
+button.red {
+  background:tomato;
+  color:white;
+}
+button.red:hover {
+  background:white;
+  color: tomato;
+}
+
+p {
+  margin: 0;
+}
+
+.App {
   font-family: sans-serif;
+  text-align: center;
+  padding: 25px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.byline {
+  font: 12px Raleway, Arial, sans-serif;
+  color: white;
+  margin: -31px 120px 25px 0px;
+}
+
+.byline a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.hands-container {
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: auto auto;
+}
+
+.Hand {
+  margin: 25px;
+}
+
+.cards-container {
+  padding-top: 10px;
+  padding-right: 150px;
+}
+
+.Card {
+  display: inline-block;
+  background-color: white;
+  box-shadow: 5px 10px #888888;
+  -webkit-box-shadow: 7px 7px 15px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 7px 15px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 7px 15px -5px rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  border-radius: 5px;
+  height: 175px;
+  width: 115px;
+  margin: 10px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.Card p {
+  text-align: center;
+  font: 75px/165px Righteous, Georgia, Times New Roman, serif;
+  color: darkslategray;
+}
+
+.suit-diamonds {
+  content: "♦";
+  color: tomato;
+}
+.suit-hearts {
+  content: "♥";
+  color: tomato;
+}
+.suit-clubs {
+  content: "♣";
+  color: darkslategray;
+}
+.suit-spades {
+  content: "♠";
+  color: darkslategray;
+}
+.suit-top {
+  position: absolute;
+  font-size: 20px;
+  top: 10px;
+  left: 10px;
+}
+.suit-bottom {
+  position: absolute;
+  font-size: 20px;
+  bottom: 10px;
+  right: 10px;
+  transform: rotate(180deg);
+}
+
+.face-up {
+  background-color: white;
+  overflow: hidden;
+}
+
+.face-down {
+  background-color: steelblue;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.heart {
+  color: tomato;
 }
