@@ -132,19 +132,15 @@ p {
 }
 
 .suit-diamonds {
-  content: "♦";
   color: tomato;
 }
 .suit-hearts {
-  content: "♥";
   color: tomato;
 }
 .suit-clubs {
-  content: "♣";
   color: darkslategray;
 }
 .suit-spades {
-  content: "♠";
   color: darkslategray;
 }
 .suit-top {
