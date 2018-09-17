@@ -60,12 +60,12 @@ export default class App extends Component {
     });
   }
 
-  handleHit = event => {
+  handleHit = (event) => {
     const hand = event.target.value + "Hand";
     const score = event.target.value + "Score";
     const handArr = this.state[hand];
 
-    if (this.state[score] < 21 && this.state[hand].length < 2) {
+    if (this.state[score] < 21) {
       fetch(
         `https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=1`
       )
@@ -79,6 +79,13 @@ export default class App extends Component {
         });
     }
   };
+
+  endPlayerTurn = (event) => {
+    console.log("Ended player turn")
+    // this.setState({
+    //   playerTurn: false
+    // })
+  }
 
   render() {
     // I see the assingment states that a 'start game' and 'deal' button should be present
@@ -116,6 +123,7 @@ export default class App extends Component {
               cards={this.state.playerHand}
               score={this.state.playerScore}
               playerTurn={this.state.playerTurn}
+              endPlayerTurn={this.endPlayerTurn}
               handleHit={this.handleHit}
             />
           </div>
