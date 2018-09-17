@@ -78,7 +78,8 @@ p {
   font-family: sans-serif;
   text-align: center;
   padding: 25px;
-  width: 800px;
+  min-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
