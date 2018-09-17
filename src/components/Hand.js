@@ -56,14 +56,14 @@ export default class Hand extends Component {
                 }
               </div>
               :
-              <div>
+              <div className="message-container">
                 <p>Waiting on Dealer</p>
               </div>
             }
           </div>
           :
-          <div>
-            <p>Waiting...</p>
+          <div className="message-container">
+            <p>Waiting on Player</p>
           </div>
         }
 

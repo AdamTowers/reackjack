@@ -174,3 +174,11 @@ p {
 .heart {
   color: tomato;
 }
+
+.message-container {
+  color: mediumseagreen;
+  margin: 5px;
+  font: 14px Raleway, Arial, sans-serif;
+  padding: 5px 15px;
+  font-weight: bold;
+}
