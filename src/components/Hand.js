@@ -25,31 +25,40 @@ export default class Hand extends Component {
           this.props.name === "Player" ?
           <div>
             {
-              this.props.playerTurn && this.props.score < 21 ?
+              this.props.playerTurn ?
               <div>
-                <button
-                  className="sm"
-                  onClick={event => this.props.handleHit(event)}
-                  value={this.props.name.toLowerCase()}
-                >
-                  Hit
-                </button>
-                <button
-                  className="sm"
-                  onClick={event => this.props.endPlayerTurn(event)}
-                  value={this.props.name.toLowerCase()}
-                >
-                  Stay
-                </button>
+                {
+                  this.props.score < 21 ?
+                  <div>
+                    <button
+                      className="sm"
+                      onClick={event => this.props.handleHit(event)}
+                      value={this.props.name.toLowerCase()}
+                    >
+                      Hit
+                    </button>
+                    <button
+                      className="sm"
+                      onClick={event => this.props.endPlayerTurn(event)}
+                      value={this.props.name.toLowerCase()}
+                    >
+                      Stay
+                    </button>
+                  </div>
+                  :
+                  <button
+                    className="sm"
+                    onClick={event => this.props.endPlayerTurn(event)}
+                    value={this.props.name.toLowerCase()}
+                  >
+                    End Turn
+                  </button>
+                }
               </div>
               :
-              <button
-                className="sm"
-                onClick={event => this.props.endPlayerTurn(event)}
-                value={this.props.name.toLowerCase()}
-              >
-                End Turn
-              </button>
+              <div>
+                <p>Waiting on Dealer</p>
+              </div>
             }
           </div>
           :

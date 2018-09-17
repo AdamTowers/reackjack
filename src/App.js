@@ -39,6 +39,7 @@ export default class App extends Component {
         const value0 = this.returnValue(json.cards[0].value);
         const value1 = this.returnValue(json.cards[1].value);
         this.setState({
+          playerTurn: true,
           gameStarted: true,
           deckId: json.deck_id,
           dealerHand: [...this.state.dealerHand, json.cards[0]],
@@ -81,10 +82,9 @@ export default class App extends Component {
   };
 
   endPlayerTurn = (event) => {
-    console.log("Ended player turn")
-    // this.setState({
-    //   playerTurn: false
-    // })
+    this.setState({
+      playerTurn: false
+    })
   }
 
   render() {
