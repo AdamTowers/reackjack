@@ -21,13 +21,28 @@ export default class Hand extends Component {
       <div className={this.props.name + " Hand"}>
         <h3>{this.props.name}</h3>
         <h5>{this.props.score}</h5>
-        <button
-          className="sm"
-          onClick={event => this.props.handleDrawCard(event)}
-          value={this.props.name.toLowerCase()}
-        >
-          Draw Card
-        </button>
+        {
+          this.props.playerTurn && this.props.score < 21 ?
+          <div>
+            <button
+              className="sm"
+              onClick={event => this.props.handleHit(event)}
+              value={this.props.name.toLowerCase()}
+            >
+              Hit
+            </button>
+            <button
+              className="sm"
+              onClick={event => this.props.handleStay(event)}
+              value={this.props.name.toLowerCase()}
+            >
+              Stay
+            </button>
+          </div>
+          :
+          ''
+        }
+
         <div className="cards-container">{cards}</div>
       </div>
     );

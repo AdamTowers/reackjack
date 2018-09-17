@@ -3,6 +3,7 @@ import Hand from "./components/Hand.js";
 
 export default class App extends Component {
   state = {
+    playerTurn: true,
     gameStarted: false,
     deckId: "",
     dealerHand: [],
@@ -59,7 +60,7 @@ export default class App extends Component {
     });
   }
 
-  handleDrawCard = event => {
+  handleHit = event => {
     const hand = event.target.value + "Hand";
     const score = event.target.value + "Score";
     const handArr = this.state[hand];
@@ -107,13 +108,15 @@ export default class App extends Component {
               name="Dealer"
               cards={this.state.dealerHand}
               score={this.state.dealerScore}
-              handleDrawCard={this.handleDrawCard}
+              playerTurn={this.state.playerTurn}
+              handleHit={this.handleHit}
             />
             <Hand
               name="Player"
               cards={this.state.playerHand}
               score={this.state.playerScore}
-              handleDrawCard={this.handleDrawCard}
+              playerTurn={this.state.playerTurn}
+              handleHit={this.handleHit}
             />
           </div>
         ) : (
