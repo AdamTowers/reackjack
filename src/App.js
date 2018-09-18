@@ -127,7 +127,7 @@ export default class App extends Component {
             <Hand
               name="Dealer"
               cards={this.state.dealerHand}
-              score={this.state.dealerScore}
+              score={this.state.playerTurn ? "?" : this.state.dealerScore}
               playerTurn={this.state.playerTurn}
               handleHit={this.handleHit}
               handleDealerTurn={this.handleDealerTurn}
