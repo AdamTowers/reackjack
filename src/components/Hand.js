@@ -20,7 +20,7 @@ export default class Hand extends Component {
     return (
       <div className={this.props.name + " Hand"}>
         <h3>{this.props.name}</h3>
-        <h5>{this.props.score}</h5>
+        <h5>{this.props[this.props.name.toLowerCase() + "Score"]}</h5>
         {
           this.props.name === "Player" ?
           <div>
@@ -28,7 +28,7 @@ export default class Hand extends Component {
               this.props.playerTurn ?
               <div>
                 {
-                  this.props.score < 21 ?
+                  this.props.playerScore < 21 ?
                   <div>
                     <button
                       className="sm"
@@ -69,10 +69,21 @@ export default class Hand extends Component {
                 <p>Waiting on Player</p>
               </div>
               :
-              <div
-                className="message-container"
-                >
-                <p>Dealer turn in progress</p>
+              <div>
+                {
+                  this.props.dealerScore < 17 && this.props.dealerScore < this.props.playerScore ?
+                  <button
+                    className="sm"
+                    onClick={event => this.props.handleHit(event)}
+                    value={this.props.name.toLowerCase()}
+                  >
+                    Hit
+                  </button>
+                  :
+                  <div className="message-container">
+                    <p>Done</p>
+                  </div>
+                }
               </div>
             }
           </div>
