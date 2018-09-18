@@ -71,7 +71,7 @@ export default class Hand extends Component {
               :
               <div>
                 {
-                  this.props.dealerScore < 17 && this.props.dealerScore < this.props.playerScore ?
+                  this.props.dealerScore < 17 || this.props.dealerScore < this.props.playerScore ?
                   <button
                     className="sm"
                     onClick={event => this.props.handleHit(event)}

@@ -8,8 +8,10 @@ export default class App extends Component {
     deckId: "",
     dealerHand: [],
     dealerScore: 0,
+    dealerResult: "",
     playerHand: [],
-    playerScore: 0
+    playerScore: 0,
+    playerResult: "",
   };
 
   returnValue(value) {
@@ -49,6 +51,17 @@ export default class App extends Component {
       });
   }
 
+  handleResult() {
+    if (this.state.playerScore === 21) {
+      this.setState({
+        playerResult: "Winner",
+        dealerResult: "Loser"
+      })
+    } else {
+      
+    }
+  }
+
   handleEndGame() {
     this.setState({
       playerTurn: true,
@@ -56,8 +69,10 @@ export default class App extends Component {
       deckId: "",
       dealerHand: [],
       dealerScore: 0,
+      dealerResult: "",
       playerHand: [],
-      playerScore: 0
+      playerScore: 0,
+      playerResult: ""
     });
   }
 
