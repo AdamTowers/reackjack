@@ -39,19 +39,19 @@ export default class App extends Component {
         const value0 = this.returnValue(json.cards[0].value);
         const value1 = this.returnValue(json.cards[1].value);
         this.setState({
-          playerTurn: true,
           gameStarted: true,
           deckId: json.deck_id,
           dealerHand: [...this.state.dealerHand, json.cards[0]],
-          dealerScore: (this.state.dealerScore += value0),
+          dealerScore: (this.state.dealerScore + value0),
           playerHand: [...this.state.playerHand, json.cards[1]],
-          playerScore: (this.state.playerScore += value1)
+          playerScore: (this.state.playerScore + value1)
         });
       });
   }
 
   handleEndGame() {
     this.setState({
+      playerTurn: true,
       gameStarted: false,
       deckId: "",
       dealerHand: [],
@@ -64,22 +64,35 @@ export default class App extends Component {
   handleHit = (event) => {
     const hand = event.target.value + "Hand";
     const score = event.target.value + "Score";
-    const handArr = this.state[hand];
 
     if (this.state[score] < 21) {
-      fetch(
-        `https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=1`
-      )
+      fetch(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=1`)
         .then(res => res.json())
         .then(json => {
           const newValue = this.returnValue(json.cards[0].value);
           this.setState({
             [hand]: [...this.state[hand], json.cards[0]],
-            [score]: (this.state[score] += newValue)
+            [score]: (this.state[score] + newValue)
           });
         });
     }
   };
+
+  handleDealerTurn = () => {
+    if (this.state.dealerScore < 17 || this.state.dealerScore < this.state.playerScore) {
+      fetch(`https://deckofcardsapi.com/api/deck/${this.state.deckId}/draw/?count=1`)
+        .then(res => res.json())
+        .then(json => {
+          const newValue = this.returnValue(json.cards[0].value);
+          this.setState({
+            dealerHand: [...this.state.dealerHand, json.cards[0]],
+            dealerScore: (this.state.dealerScore + newValue)
+          });
+        });
+    } else {
+      this.handleEndGame()
+    }
+  }
 
   endPlayerTurn = (event) => {
     this.setState({
@@ -117,6 +130,7 @@ export default class App extends Component {
               score={this.state.dealerScore}
               playerTurn={this.state.playerTurn}
               handleHit={this.handleHit}
+              handleDealerTurn={this.handleDealerTurn}
             />
             <Hand
               name="Player"

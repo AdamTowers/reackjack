@@ -62,8 +62,19 @@ export default class Hand extends Component {
             }
           </div>
           :
-          <div className="message-container">
-            <p>Waiting on Player</p>
+          <div>
+            {
+              this.props.playerTurn ?
+              <div className="message-container">
+                <p>Waiting on Player</p>
+              </div>
+              :
+              <div
+                className="message-container"
+                >
+                <p>Dealer turn in progress</p>
+              </div>
+            }
           </div>
         }
 
