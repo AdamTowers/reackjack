@@ -12,6 +12,7 @@ export default class App extends Component {
     playerHand: [],
     playerScore: 0,
     playerResult: "",
+    isError: false
   };
 
   returnValue(value) {
@@ -47,6 +48,11 @@ export default class App extends Component {
           dealerScore: (this.state.dealerScore + value0),
           playerHand: [...this.state.playerHand, json.cards[1]],
           playerScore: (this.state.playerScore + value1)
+        })
+      })
+      .catch(err => {
+        this.setState({
+          isError: true
         });
       });
   }
@@ -58,7 +64,7 @@ export default class App extends Component {
         dealerResult: "Loser"
       })
     } else {
-      
+
     }
   }
 
@@ -127,14 +133,20 @@ export default class App extends Component {
             Made with <span className="heart">♥</span> by{" "}
             <a href="mailto:hello@adamtowers.tech">Adam Towers</a>
           </div>
-          {this.state.gameStarted ? (
-            <button className="lg red" onClick={() => this.handleEndGame()}>
-              End Game
-            </button>
+          {this.state.isError ? (
+            <div>The server is down, try again later.</div>
           ) : (
-            <button className="lg" onClick={() => this.handleStartGame()}>
-              Start Game
-            </button>
+            <div>
+              {this.state.gameStarted ? (
+                <button className="lg red" onClick={() => this.handleEndGame()}>
+                  End Game
+                </button>
+              ) : (
+                <button className="lg" onClick={() => this.handleStartGame()}>
+                  Start Game
+                </button>
+              )}
+            </div>
           )}
         </div>
         {this.state.dealerHand.length > 0 ? (
